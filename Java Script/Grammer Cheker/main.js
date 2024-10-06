@@ -11,7 +11,7 @@ count = 0;
 storyWords.forEach((word) => {
   count += 1;
 });
-console.log(count);
+// console.log(count);
 
 storyWords = storyWords.filter((word) => {
   if (word != unnecessaryWord) {
@@ -19,4 +19,19 @@ storyWords = storyWords.filter((word) => {
   }
 });
 
+storyWords = storyWords.map((word => { 
+  if (word === misspelledWord){
+    return 'beautiful'
+  } else {
+    return word
+  }
+}))
+
+badWordIndex = storyWords.findIndex(word => word === badWord)
+console.log(badWordIndex);
 console.log(storyWords.join(" "));
+
+
+
+
+
