@@ -12,13 +12,14 @@ groceries( [{item: 'Bread'}, {item: 'Butter'}] );
 groceries( [{item: 'Cheese Balls'}] );
 // returns 'Cheese Balls'
 */
-listItems = [
-  { item: "Carrots" },
-  { item: "Hummus" },
-  { item: "Pesto" },
-  { item: "Rigatoni" },
-];
+// listItems = [
+//   { item: "Carrots" },
+//   { item: "Hummus" },
+//   { item: "Pesto" },
+//   { item: "Rigatoni" },
+// ];
 
+/*
 const groceries = (arr) => {
   let list = [];
 
@@ -41,4 +42,20 @@ const groceries = (arr) => {
   }
 };
 
-groceries(listItems);
+// groceries(listItems);
+
+groceries([{item: 'Lettuce'}, {item: 'Onions'}, {item: 'Tomatoes'}])
+*/
+
+const groceries = (arr) => {
+  const list = arr.map((a) => a.item);
+
+  if (list.length === 1) {
+    console.log(list[0]);
+  } else {
+    const lastItem = list.pop();
+    console.log(`${list.join(", ")} and ${lastItem}`);
+  }
+};
+
+groceries([{ item: "Lettuce" }]);
