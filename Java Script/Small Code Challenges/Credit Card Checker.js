@@ -123,4 +123,61 @@ const idInvalidCardCompanies = (arr) => {
   console.log(companies);
 };
 
-idInvalidCardCompanies(invalidCards);
+// idInvalidCardCompanies(invalidCards);
+
+//string to an array
+const stringToArray = (str) => {
+  return str.split("");
+};
+// console.log(stringToArray("6541859724573654"));
+
+//invalid number to valid number
+const fixToValid = (arr) => {
+  if (validateCred(arr) === false) {
+    // console.log("Invalid");
+    let sumOddDigits = 0;
+    let sumEvenDigits = 0;
+    //   console.log(`length of array: ${arr.length}`);
+
+    // Add odd-indexed digits (starting from the right)
+    for (let i = arr.length - 1; i >= 0; i -= 2) {
+      sumOddDigits += arr[i];
+    }
+
+    // Add even-indexed digits, applying the doubling and adjustment
+    for (let j = arr.length - 1; j > 0; j -= 2) {
+      let temp = arr[j - 1] * 2;
+      if (temp < 10) {
+        sumEvenDigits += temp;
+      } else {
+        sumEvenDigits += temp - 9;
+      }
+    }
+    let total = (sumEvenDigits + sumOddDigits) % 10;
+    console.log(`remainder: ${total}`);
+    if (arr[arr.length - 1] - total >= 0) {
+      arr[arr.length - 1] -= total;
+    } else {
+      arr[arr.length - 1] += 10 - total;
+    }
+    return arr;
+  }
+};
+
+//invalid numbers to check
+const invalidNumberToCheck = invalid3;
+
+//an invalid number
+console.log(invalidNumberToCheck);
+
+//test for the invalid number
+console.log(validateCred(invalidNumberToCheck));
+
+//fix the number and insert into fixedNumber
+let fixedNumber = fixToValid(invalidNumberToCheck);
+
+//the new fixed number:
+console.log(fixedNumber);
+
+//test for the new number
+console.log(validateCred(fixedNumber));
