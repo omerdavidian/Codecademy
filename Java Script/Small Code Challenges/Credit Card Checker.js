@@ -67,7 +67,7 @@ const validateCred = (arr) => {
   return (sumEvenDigits + sumOddDigits) % 10 === 0;
 };
 
-console.log(validateCred(invalid4));
+// console.log(validateCred(invalid4));
 
 //check through the nested array for which numbers are invalid, and return another nested array of invalid cards
 const findInvalidCards = (arr) => {
@@ -80,4 +80,46 @@ const findInvalidCards = (arr) => {
   return invalidCards;
 };
 
-console.log(findInvalidCards(batch));
+const invalidCards = findInvalidCards(batch);
+// console.log(invalidCards)
+
+const idInvalidCardCompanies = (arr) => {
+  let companies = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    // console.log(arr[i][0]);
+    switch (arr[i][0]) {
+      case 3:
+        // console.log("Amex");
+        if (companies.indexOf("Amex") === -1) {
+          companies.push("Amex");
+        }
+        break;
+      case 4:
+        // console.log("Visa");
+        if (companies.indexOf("Visa") === -1) {
+          companies.push("Visa");
+        }
+
+        break;
+      case 5:
+        // console.log("Mastercard");
+        if (companies.indexOf("Mastercard") === -1) {
+          companies.push("Mastercard");
+        }
+
+        break;
+      case 6:
+        // console.log("Discover");
+        if (companies.indexOf("Discover") === -1) {
+          companies.push("Discover");
+        }
+
+        break;
+      default:
+        console.log("Company not found");
+    }
+  }
+  console.log(companies);
+};
+idInvalidCardCompanies(invalidCards);
