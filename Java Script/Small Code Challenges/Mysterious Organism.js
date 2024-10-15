@@ -33,9 +33,21 @@ const pAequorFactory = (num, dnaArr) => {
       console.log(`new cell dana: ${dnaArr[cellNum]}`);
       return dnaArr;
     },
+    compareDNA(otherOrganism) {
+      let matches = 0;
+      for (let i = 0; i < this.dna.length; i++) {
+        if (this.dna[i] === otherOrganism.dna[i]) {
+          matches++;
+        }
+      }
+      const similarity = ((matches / this.dna.length) * 100).toFixed(2);
+      console.log(`specimen #2 have ${similarity}% DNA in common`);
+    },
   };
 };
 
-const newOrganism = pAequorFactory(1, mockUpStrand());
-
-console.log(newOrganism.mutate());
+const newOrganism1 = pAequorFactory(1, mockUpStrand());
+const newOrganism2 = pAequorFactory(2, mockUpStrand());
+// console.log(newOrganism1.dna);
+// console.log(newOrganism2.dna);
+newOrganism1.compareDNA(newOrganism2);
