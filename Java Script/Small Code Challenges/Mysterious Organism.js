@@ -43,6 +43,23 @@ const pAequorFactory = (num, dnaArr) => {
       const similarity = ((matches / this.dna.length) * 100).toFixed(2);
       console.log(`specimen #2 have ${similarity}% DNA in common`);
     },
+    willLikelySurvive() {
+      let mostlyC = 0;
+      let mostlyG = 0;
+      for (let i = 0; i < this.dna.length; i++) {
+        if (this.dna[i] === "C") {
+          mostlyC++;
+        } else if (this.dna[i] === "G") {
+          mostlyG++;
+        }
+      }
+      console.log(`C count: ${mostlyC}`);
+      console.log(`G count: ${mostlyG}`);
+
+      const percentageC = (mostlyC / this.dna.length) * 100;
+      const percentageG = (mostlyG / this.dna.length) * 100;
+      return percentageC >= 60 || percentageG >= 60;
+    },
   };
 };
 
@@ -51,3 +68,6 @@ const newOrganism2 = pAequorFactory(2, mockUpStrand());
 // console.log(newOrganism1.dna);
 // console.log(newOrganism2.dna);
 newOrganism1.compareDNA(newOrganism2);
+
+const mostlyC = newOrganism1.willLikelySurvive();
+console.log(mostlyC);
