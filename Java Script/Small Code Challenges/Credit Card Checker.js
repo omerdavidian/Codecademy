@@ -43,26 +43,23 @@ const batch = [
 const validateCred = (arr) => {
   let sumOddDigits = 0;
   let sumEvenDigits = 0;
-  if (arr.length % 2 === 0) {
-    console.log(`length of array: ${arr.length}`);
+  console.log(`length of array: ${arr.length}`);
 
-    // Add odd-indexed digits (starting from the right)
-    for (let i = arr.length - 1; i >= 0; i -= 2) {
-      sumOddDigits += arr[i];
-    }
-
-    // Add even-indexed digits, applying the doubling and adjustment
-    for (let j = arr.length - 1; j > 0; j -= 2) {
-      let temp = arr[j - 1] * 2;
-      if (temp < 10) {
-        sumEvenDigits += temp;
-      } else {
-        sumEvenDigits += temp - 9;
-      }
-    }
-  } else {
-    console.log(`length of array: ${arr.length}`);
+  // Add odd-indexed digits (starting from the right)
+  for (let i = arr.length - 1; i >= 0; i -= 2) {
+    sumOddDigits += arr[i];
   }
+
+  // Add even-indexed digits, applying the doubling and adjustment
+  for (let j = arr.length - 1; j > 0; j -= 2) {
+    let temp = arr[j - 1] * 2;
+    if (temp < 10) {
+      sumEvenDigits += temp;
+    } else {
+      sumEvenDigits += temp - 9;
+    }
+  }
+
   console.log(`Sum of Odd numbers from the right: ${sumOddDigits}`);
   console.log(`Sum of Even numbers from the right: ${sumEvenDigits}`);
   console.log(`Total of numbers: ${sumEvenDigits + sumOddDigits}`);
@@ -70,4 +67,4 @@ const validateCred = (arr) => {
   return (sumEvenDigits + sumOddDigits) % 10 === 0;
 };
 
-console.log(validateCred(valid1));
+console.log(validateCred(invalid5));
