@@ -122,4 +122,5 @@ const idInvalidCardCompanies = (arr) => {
   }
   console.log(companies);
 };
+
 idInvalidCardCompanies(invalidCards);
